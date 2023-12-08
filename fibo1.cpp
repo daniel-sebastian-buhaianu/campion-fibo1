@@ -12,23 +12,11 @@ int main()
   for (int i = 2; i <= n; i++)
     fib[i] = (fib[i-1] + fib[i-2])%VMAX;
 	ofstream g("fibo1.out");
-  if (n < 3) g << -1;
-  else
-  {
-    int i, j;
-    if (n%2)
-    {
-      g << 1 << '\n';
-      j = n/2, i = j+1;
-    }
-    else
-    {
-      g << 0 << '\n';
-      j = n/2+1, i = j-2;
-    }
-    g << i << ' ' << j << '\n';
-    g << fib[i] << '\n' << fib[j] << '\n' << fib[n];
-  }
+  int i, j, rez;
+  if (n%2) rez = 1, i = n/2, j = i+1;
+  else rez = 0, j = n/2+1, i = j-2;
+  g << rez << '\n' << i << ' ' << j << '\n';
+  g << fib[i] << '\n' << fib[j] << '\n' << fib[n];
 	g.close();
 	return 0;
 }
